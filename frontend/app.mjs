@@ -23,7 +23,14 @@ const redirectToLogin = async () => {
 	const codeVerifier = await generateNonce();
 	sessionStorage.setItem(`codeVerifier-${state}`, codeVerifier);
 	const codeChallenge = base64URLEncode(await sha256(codeVerifier));
-	window.location = `${cognitoLoginUrl}/login?response_type=code&client_id=${clientId}&state=${state}&code_challenge_method=S256&code_challenge=${codeChallenge}&redirect_uri=${window.location.origin}`;
+	// const url = `${cognitoLoginUrl}/login?response_type=code&client_id=${clientId}&state=${state}&code_challenge_method=S256&code_challenge=${codeChallenge}&redirect_uri=${window.location.origin}`;
+	// console.log(url);
+	// alert(url);
+	window.location.href = `${cognitoLoginUrl}/login?response_type=code&client_id=${clientId}&state=${state}&code_challenge_method=S256&code_challenge=${codeChallenge}&redirect_uri=${window.location.origin}`;
+	//   window.location =
+      //   "https://sosepbackgammon.auth.ca-central-1.amazoncognito.com/login?response_type=code&client_id=35r5v11v77trsrts6b7lmebupn&redirect_uri=http://localhost:5173/Backgammon/signup";
+    //   "https://sosepbackgammon.auth.ca-central-1.amazoncognito.com/login?response_type=code&client_id=35r5v11v77trsrts6b7lmebupn&redirect_uri=http://localhost:5500";
+
 };
 
 document.querySelector("#loginButton").addEventListener("click", () => {
